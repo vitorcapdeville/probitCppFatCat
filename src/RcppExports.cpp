@@ -15,9 +15,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// probCpp
-NumericVector probCpp(NumericVector alfa, NumericVector beta, NumericVector f, double sigma2);
-RcppExport SEXP _probitCppFatCat_probCpp(SEXP alfaSEXP, SEXP betaSEXP, SEXP fSEXP, SEXP sigma2SEXP) {
+// probProbit
+NumericVector probProbit(NumericVector alfa, NumericVector beta, NumericVector f, double sigma2);
+RcppExport SEXP _probitCppFatCat_probProbit(SEXP alfaSEXP, SEXP betaSEXP, SEXP fSEXP, SEXP sigma2SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -25,13 +25,39 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type beta(betaSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type f(fSEXP);
     Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
-    rcpp_result_gen = Rcpp::wrap(probCpp(alfa, beta, f, sigma2));
+    rcpp_result_gen = Rcpp::wrap(probProbit(alfa, beta, f, sigma2));
     return rcpp_result_gen;
 END_RCPP
 }
-// logcondcompbetajCpp
-double logcondcompbetajCpp(NumericMatrix f, NumericVector beta, NumericVector alfa, double sigma2, NumericMatrix y, int j);
-RcppExport SEXP _probitCppFatCat_logcondcompbetajCpp(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP jSEXP) {
+// probLogit
+NumericVector probLogit(NumericVector alfa, NumericVector beta, NumericVector f, double sigma2);
+RcppExport SEXP _probitCppFatCat_probLogit(SEXP alfaSEXP, SEXP betaSEXP, SEXP fSEXP, SEXP sigma2SEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type alfa(alfaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type f(fSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
+    rcpp_result_gen = Rcpp::wrap(probLogit(alfa, beta, f, sigma2));
+    return rcpp_result_gen;
+END_RCPP
+}
+// probNominal
+NumericVector probNominal(NumericMatrix beta, double f);
+RcppExport SEXP _probitCppFatCat_probNominal(SEXP betaSEXP, SEXP fSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< double >::type f(fSEXP);
+    rcpp_result_gen = Rcpp::wrap(probNominal(beta, f));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logcondcompbetajProbit
+double logcondcompbetajProbit(NumericMatrix f, NumericVector beta, NumericVector alfa, double sigma2, NumericMatrix y, int j);
+RcppExport SEXP _probitCppFatCat_logcondcompbetajProbit(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP jSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -41,13 +67,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
     Rcpp::traits::input_parameter< int >::type j(jSEXP);
-    rcpp_result_gen = Rcpp::wrap(logcondcompbetajCpp(f, beta, alfa, sigma2, y, j));
+    rcpp_result_gen = Rcpp::wrap(logcondcompbetajProbit(f, beta, alfa, sigma2, y, j));
     return rcpp_result_gen;
 END_RCPP
 }
-// logcondcompfiCpp
-double logcondcompfiCpp(NumericVector f, NumericMatrix beta, NumericMatrix alfa, NumericVector sigma2, NumericMatrix y, int i);
-RcppExport SEXP _probitCppFatCat_logcondcompfiCpp(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP iSEXP) {
+// logcondcompfiProbit
+double logcondcompfiProbit(NumericVector f, NumericMatrix beta, NumericMatrix alfa, NumericVector sigma2, NumericMatrix y, int i);
+RcppExport SEXP _probitCppFatCat_logcondcompfiProbit(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP iSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -57,13 +83,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type sigma2(sigma2SEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
     Rcpp::traits::input_parameter< int >::type i(iSEXP);
-    rcpp_result_gen = Rcpp::wrap(logcondcompfiCpp(f, beta, alfa, sigma2, y, i));
+    rcpp_result_gen = Rcpp::wrap(logcondcompfiProbit(f, beta, alfa, sigma2, y, i));
     return rcpp_result_gen;
 END_RCPP
 }
-// logcondcompsigma2jCpp
-double logcondcompsigma2jCpp(NumericMatrix f, NumericVector beta, NumericVector alfa, double sigma2, NumericMatrix y, int j);
-RcppExport SEXP _probitCppFatCat_logcondcompsigma2jCpp(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP jSEXP) {
+// logcondcompsigma2jProbit
+double logcondcompsigma2jProbit(NumericMatrix f, NumericVector beta, NumericVector alfa, double sigma2, NumericMatrix y, int j);
+RcppExport SEXP _probitCppFatCat_logcondcompsigma2jProbit(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP jSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -73,17 +99,101 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
     Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
     Rcpp::traits::input_parameter< int >::type j(jSEXP);
-    rcpp_result_gen = Rcpp::wrap(logcondcompsigma2jCpp(f, beta, alfa, sigma2, y, j));
+    rcpp_result_gen = Rcpp::wrap(logcondcompsigma2jProbit(f, beta, alfa, sigma2, y, j));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logcondcompbetajLogit
+double logcondcompbetajLogit(NumericMatrix f, NumericVector beta, NumericVector alfa, double sigma2, NumericMatrix y, int j);
+RcppExport SEXP _probitCppFatCat_logcondcompbetajLogit(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP jSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type f(fSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type alfa(alfaSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type j(jSEXP);
+    rcpp_result_gen = Rcpp::wrap(logcondcompbetajLogit(f, beta, alfa, sigma2, y, j));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logcondcompfiLogit
+double logcondcompfiLogit(NumericVector f, NumericMatrix beta, NumericMatrix alfa, NumericVector sigma2, NumericMatrix y, int i);
+RcppExport SEXP _probitCppFatCat_logcondcompfiLogit(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP iSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type f(fSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type alfa(alfaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type sigma2(sigma2SEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type i(iSEXP);
+    rcpp_result_gen = Rcpp::wrap(logcondcompfiLogit(f, beta, alfa, sigma2, y, i));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logcondcompsigma2jLogit
+double logcondcompsigma2jLogit(NumericMatrix f, NumericVector beta, NumericVector alfa, double sigma2, NumericMatrix y, int j);
+RcppExport SEXP _probitCppFatCat_logcondcompsigma2jLogit(SEXP fSEXP, SEXP betaSEXP, SEXP alfaSEXP, SEXP sigma2SEXP, SEXP ySEXP, SEXP jSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type f(fSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type alfa(alfaSEXP);
+    Rcpp::traits::input_parameter< double >::type sigma2(sigma2SEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type j(jSEXP);
+    rcpp_result_gen = Rcpp::wrap(logcondcompsigma2jLogit(f, beta, alfa, sigma2, y, j));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logcondcompbetajkNominal
+double logcondcompbetajkNominal(NumericVector f, NumericMatrix beta, NumericMatrix y, int j, int k);
+RcppExport SEXP _probitCppFatCat_logcondcompbetajkNominal(SEXP fSEXP, SEXP betaSEXP, SEXP ySEXP, SEXP jSEXP, SEXP kSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type f(fSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type j(jSEXP);
+    Rcpp::traits::input_parameter< int >::type k(kSEXP);
+    rcpp_result_gen = Rcpp::wrap(logcondcompbetajkNominal(f, beta, y, j, k));
+    return rcpp_result_gen;
+END_RCPP
+}
+// logcondcompfiNominal
+double logcondcompfiNominal(double f, NumericMatrix beta, NumericMatrix y, int i);
+RcppExport SEXP _probitCppFatCat_logcondcompfiNominal(SEXP fSEXP, SEXP betaSEXP, SEXP ySEXP, SEXP iSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type f(fSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type beta(betaSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type i(iSEXP);
+    rcpp_result_gen = Rcpp::wrap(logcondcompfiNominal(f, beta, y, i));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_probitCppFatCat_rcpp_hello_world", (DL_FUNC) &_probitCppFatCat_rcpp_hello_world, 0},
-    {"_probitCppFatCat_probCpp", (DL_FUNC) &_probitCppFatCat_probCpp, 4},
-    {"_probitCppFatCat_logcondcompbetajCpp", (DL_FUNC) &_probitCppFatCat_logcondcompbetajCpp, 6},
-    {"_probitCppFatCat_logcondcompfiCpp", (DL_FUNC) &_probitCppFatCat_logcondcompfiCpp, 6},
-    {"_probitCppFatCat_logcondcompsigma2jCpp", (DL_FUNC) &_probitCppFatCat_logcondcompsigma2jCpp, 6},
+    {"_probitCppFatCat_probProbit", (DL_FUNC) &_probitCppFatCat_probProbit, 4},
+    {"_probitCppFatCat_probLogit", (DL_FUNC) &_probitCppFatCat_probLogit, 4},
+    {"_probitCppFatCat_probNominal", (DL_FUNC) &_probitCppFatCat_probNominal, 2},
+    {"_probitCppFatCat_logcondcompbetajProbit", (DL_FUNC) &_probitCppFatCat_logcondcompbetajProbit, 6},
+    {"_probitCppFatCat_logcondcompfiProbit", (DL_FUNC) &_probitCppFatCat_logcondcompfiProbit, 6},
+    {"_probitCppFatCat_logcondcompsigma2jProbit", (DL_FUNC) &_probitCppFatCat_logcondcompsigma2jProbit, 6},
+    {"_probitCppFatCat_logcondcompbetajLogit", (DL_FUNC) &_probitCppFatCat_logcondcompbetajLogit, 6},
+    {"_probitCppFatCat_logcondcompfiLogit", (DL_FUNC) &_probitCppFatCat_logcondcompfiLogit, 6},
+    {"_probitCppFatCat_logcondcompsigma2jLogit", (DL_FUNC) &_probitCppFatCat_logcondcompsigma2jLogit, 6},
+    {"_probitCppFatCat_logcondcompbetajkNominal", (DL_FUNC) &_probitCppFatCat_logcondcompbetajkNominal, 5},
+    {"_probitCppFatCat_logcondcompfiNominal", (DL_FUNC) &_probitCppFatCat_logcondcompfiNominal, 4},
     {NULL, NULL, 0}
 };
 

@@ -5,19 +5,47 @@ rcpp_hello_world <- function() {
     .Call(`_probitCppFatCat_rcpp_hello_world`)
 }
 
-probCpp <- function(alfa, beta, f, sigma2) {
-    .Call(`_probitCppFatCat_probCpp`, alfa, beta, f, sigma2)
+probProbit <- function(alfa, beta, f, sigma2) {
+    .Call(`_probitCppFatCat_probProbit`, alfa, beta, f, sigma2)
 }
 
-logcondcompbetajCpp <- function(f, beta, alfa, sigma2, y, j) {
-    .Call(`_probitCppFatCat_logcondcompbetajCpp`, f, beta, alfa, sigma2, y, j)
+probLogit <- function(alfa, beta, f, sigma2) {
+    .Call(`_probitCppFatCat_probLogit`, alfa, beta, f, sigma2)
 }
 
-logcondcompfiCpp <- function(f, beta, alfa, sigma2, y, i) {
-    .Call(`_probitCppFatCat_logcondcompfiCpp`, f, beta, alfa, sigma2, y, i)
+probNominal <- function(beta, f) {
+    .Call(`_probitCppFatCat_probNominal`, beta, f)
 }
 
-logcondcompsigma2jCpp <- function(f, beta, alfa, sigma2, y, j) {
-    .Call(`_probitCppFatCat_logcondcompsigma2jCpp`, f, beta, alfa, sigma2, y, j)
+logcondcompbetajProbit <- function(f, beta, alfa, sigma2, y, j) {
+    .Call(`_probitCppFatCat_logcondcompbetajProbit`, f, beta, alfa, sigma2, y, j)
+}
+
+logcondcompfiProbit <- function(f, beta, alfa, sigma2, y, i) {
+    .Call(`_probitCppFatCat_logcondcompfiProbit`, f, beta, alfa, sigma2, y, i)
+}
+
+logcondcompsigma2jProbit <- function(f, beta, alfa, sigma2, y, j) {
+    .Call(`_probitCppFatCat_logcondcompsigma2jProbit`, f, beta, alfa, sigma2, y, j)
+}
+
+logcondcompbetajLogit <- function(f, beta, alfa, sigma2, y, j) {
+    .Call(`_probitCppFatCat_logcondcompbetajLogit`, f, beta, alfa, sigma2, y, j)
+}
+
+logcondcompfiLogit <- function(f, beta, alfa, sigma2, y, i) {
+    .Call(`_probitCppFatCat_logcondcompfiLogit`, f, beta, alfa, sigma2, y, i)
+}
+
+logcondcompsigma2jLogit <- function(f, beta, alfa, sigma2, y, j) {
+    .Call(`_probitCppFatCat_logcondcompsigma2jLogit`, f, beta, alfa, sigma2, y, j)
+}
+
+logcondcompbetajkNominal <- function(f, beta, y, j, k) {
+    .Call(`_probitCppFatCat_logcondcompbetajkNominal`, f, beta, y, j, k)
+}
+
+logcondcompfiNominal <- function(f, beta, y, i) {
+    .Call(`_probitCppFatCat_logcondcompfiNominal`, f, beta, y, i)
 }
 
